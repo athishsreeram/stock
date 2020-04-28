@@ -1,0 +1,132 @@
+&nbsp;
+<div align="center">
+    <label for="symbol">Symbol:</label>
+    <input type="text" pInputText [(ngModel)]="symbol" required />
+    &nbsp;
+    <p-button label="Click" styleClass="ui-button-info" (click)='getProfile()'></p-button>
+
+</div>
+&nbsp;
+<div *ngIf="symbol == null; else resCheck1 " align="center">
+    Please enter a valid Stock code
+</div>
+
+<ng-template #resCheck1>
+    <div *ngIf="profiles == null; else resCheck2 " align="center">
+        Please enter a valid Stock code
+    </div>
+</ng-template>
+
+<ng-template #resCheck2>
+
+    <div *ngIf=" ((profiles | json) == ({} | json))" align="center">
+        Please enter a valid Stock code
+    </div>
+    <div *ngIf="((profiles | json) != ({} | json))" align="center">
+
+
+        <h1>
+            {{profiles.profile.companyName}} - {{profiles.symbol}}
+        </h1>
+
+        <p-tabView>
+
+            <p-tabPanel header="Company Info">
+
+                <div>
+
+                    <table border="1" >
+                        <tr>
+                            <td>Price</td>
+                            <td>{{profiles.profile.price}}</td>
+                        </tr>
+                        <tr>
+                            <td>Beta</td>
+                            <td>{{profiles.profile.beta}}</td>
+                        </tr>
+                        <tr>
+                            <td>Volume Avg</td>
+                            <td>{{profiles.profile.volAvg}}</td>
+                        </tr>
+                        <tr>
+                            <td>MktCap</td>
+                            <td>{{profiles.profile.mktCap}}</td>
+                        </tr>
+                        <tr>
+                            <td>LastDiv</td>
+                            <td>{{profiles.profile.lastDiv}}</td>
+                        </tr>
+                        <tr>
+                            <td>Range</td>
+                            <td>{{profiles.profile.range}}</td>
+                        </tr>
+                        <tr>
+                            <td>Changes</td>
+                            <td>{{profiles.profile.changes}}</td>
+                        </tr>
+                        <tr>
+                            <td>ChangesPercentage</td>
+                            <td>{{profiles.profile.changesPercentage}}</td>
+                        </tr>
+                        <tr>
+                            <td>CompanyName</td>
+                            <td>{{profiles.profile.companyName}}</td>
+                        </tr>
+                        <tr>
+                            <td>Exchange</td>
+                            <td>{{profiles.profile.exchange}}</td>
+                        </tr>
+                        <tr>
+                            <td>Industry</td>
+                            <td>{{profiles.profile.industry}}</td>
+                        </tr>
+                        <tr>
+                            <td>Website</td>
+                            <td>{{profiles.profile.website}}</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>{{profiles.profile.description}}</td>
+                        </tr>
+                        <tr>
+                            <td>CEO</td>
+                            <td>{{profiles.profile.ceo}}</td>
+                        </tr>
+                        <tr>
+                            <td>sector</td>
+                            <td>{{profiles.profile.sector}}</td>
+                        </tr>
+                        <tr>
+                            <td>Logo</td>
+                            <td><img src="{{profiles.profile.image}}" /></td>
+                        </tr>
+                    </table>
+
+
+                </div>
+
+            </p-tabPanel>
+
+            <p-tabPanel header="Quote">
+                
+
+                <p-dataView [value]="quotes">
+                    <ng-template let-quote pTemplate="listItem">
+                        <div class="ui-g-12">
+                                <div>
+                                    <h1>{{quote.symbol}}</h1>
+                                    <div class="ui-g">
+                                        <div class="ui-g-12">Symbol: <b>{{quote.symbol}}</b></div>
+                                        <div class="ui-g-12">Name: <b>{{quote.name}}</b></div>
+                                    </div>
+                                </div>
+                        </div>
+                    </ng-template>
+                   
+                </p-dataView>
+
+            </p-tabPanel>
+        </p-tabView>
+    </div>
+
+</ng-template>
