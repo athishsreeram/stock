@@ -3,9 +3,9 @@
 
 <div align="center">
     <label for="symbol">Symbol:</label>
-    <input type="text" pInputText [(ngModel)]="symbol" required />
+    <input type="text" pInputText [(ngModel)]="symbol" required  (keyup)="getProfile()" />
     &nbsp;
-    <p-button label="Click" styleClass="ui-button-info" (click)='getProfile()'></p-button>
+    <!--<p-button label="Click" styleClass="ui-button-info" (click)='getProfile()'></p-button>-->
 
 </div>
 &nbsp;

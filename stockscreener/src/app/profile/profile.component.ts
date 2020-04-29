@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
               labels: chartLabel,
               datasets: [
                 {
-                  label: 'First Dataset',
+                  label: 'Price',
                   data: chartData,
                   fill: false,
                   borderColor: '#4bc0c0'
