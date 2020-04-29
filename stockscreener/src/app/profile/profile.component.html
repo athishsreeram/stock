@@ -1,4 +1,6 @@
 &nbsp;
+{{err}}
+
 <div align="center">
     <label for="symbol">Symbol:</label>
     <input type="text" pInputText [(ngModel)]="symbol" required />
@@ -24,18 +26,111 @@
     </div>
     <div *ngIf="((profiles | json) != ({} | json))" align="center">
 
-
         <h1>
             {{profiles.profile.companyName}} - {{profiles.symbol}}
         </h1>
 
         <p-tabView>
 
+            <p-tabPanel header="Chart">
+                <p-chart type="line" [data]="data" ></p-chart>
+asfd
+            </p-tabPanel>
+            <p-tabPanel header="Quote">
+                <p-dataView [value]="quotes">
+                    <ng-template let-quote pTemplate="listItem">
+                                    <table class="table table-bordered table-striped">
+                                        <tbody id="myTable1">
+                                        <tr>
+                                            <td>Symbol</td>
+                                            <td>{{quote.symbol}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>{{quote.name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>changesPercentage</td>
+                                            <td>{{quote.changesPercentage}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>change</td>
+                                            <td>{{quote.change}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>dayLow</td>
+                                            <td>{{quote.dayLow}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>dayHigh</td>
+                                            <td>{{quote.dayHigh}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>yearHigh</td>
+                                            <td>{{quote.yearHigh}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>yearHigh</td>
+                                            <td>{{quote.yearLow}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>yearHigh</td>
+                                            <td>{{quote.marketCap}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>yearHigh</td>
+                                            <td>{{quote.priceAvg50}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>priceAvg200</td>
+                                            <td>{{quote.priceAvg200}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>volume</td>
+                                            <td>{{quote.volume}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>avgVolume</td>
+                                            <td>{{quote.avgVolume}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>open</td>
+                                            <td>{{quote.open}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>previousClose</td>
+                                            <td>{{quote.previousClose}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>eps</td>
+                                            <td>{{quote.eps}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>pe</td>
+                                            <td>{{quote.pe}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>sharesOutstanding</td>
+                                            <td>{{quote.sharesOutstanding}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>timestamp</td>
+                                            <td>{{quote.timestamp}}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+
+                    </ng-template>
+                   
+                </p-dataView>
+
+            </p-tabPanel>
+            
             <p-tabPanel header="Company Info">
 
                 <div>
-
-                    <table border="1" >
+                    <table class="table table-bordered table-striped">
+                        <tbody id="myTable">
                         <tr>
                             <td>Price</td>
                             <td>{{profiles.profile.price}}</td>
@@ -100,6 +195,7 @@
                             <td>Logo</td>
                             <td><img src="{{profiles.profile.image}}" /></td>
                         </tr>
+                        </tbody>
                     </table>
 
 
@@ -107,26 +203,7 @@
 
             </p-tabPanel>
 
-            <p-tabPanel header="Quote">
-                
-
-                <p-dataView [value]="quotes">
-                    <ng-template let-quote pTemplate="listItem">
-                        <div class="ui-g-12">
-                                <div>
-                                    <h1>{{quote.symbol}}</h1>
-                                    <div class="ui-g">
-                                        <div class="ui-g-12">Symbol: <b>{{quote.symbol}}</b></div>
-                                        <div class="ui-g-12">Name: <b>{{quote.name}}</b></div>
-                                    </div>
-                                </div>
-                        </div>
-                    </ng-template>
-                   
-                </p-dataView>
-
-            </p-tabPanel>
+            
         </p-tabView>
     </div>
-
 </ng-template>

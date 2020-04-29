@@ -11,6 +11,10 @@ import {TabViewModule} from 'primeng/tabview';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {DataViewModule} from 'primeng/dataview';
+import {ChartModule} from 'primeng/chart';
+import { DatePipe } from '@angular/common';
+
+
 
 @NgModule({
   declarations: [
@@ -26,9 +30,10 @@ import {DataViewModule} from 'primeng/dataview';
     TabViewModule,
     InputTextModule,
     ButtonModule,
-    DataViewModule
+    DataViewModule,
+    ChartModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
